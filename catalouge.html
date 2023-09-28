@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .catalog-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+        .category {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid columns */
+            gap: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            color: #ff6600;
+            font-size: 18px;
+        }
+
+
+        /* Style the button to add products to the cart */
+        .add-to-cart-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 5px 10px;
+        }
+
+        .add-to-cart-button:hover {
+            background-color: #0056b3;
+        }
+		@media (max-width: 768px) {
+            .category {
+                grid-template-columns: 1fr; /* Single column layout for small screens */
+			}}
+        .message-container {
+            position: fixed;
+            bottom: 20px;
+            right: -100%; /* Initially hidden on the right */
+            background-color: #FF6600;
+            color: #fff;
+            width: auto;
+            height: auto;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: right 0.5s ease-in-out;
+        }
+	</style>
+</head>
+<body>
+    <div class="catalog-container">
+        <h1>Product Catalog</h1>
+
+        <div class="category">
+            <!-- Apparel Category -->
+            <div class="product">
+                <img src="apparel1.jpeg" alt="Apparel 1">
+                <div class="product-details">
+                    <div class="product-title">Stylish T-Shirt</div>
+                    <div class="product-price">$19.99</div>
+                </div>
+				<button class="add-to-cart-button" data-product="Stylish T-Shirt">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="apparel2.jpeg" alt="Apparel 2">
+                <div class="product-details">
+                    <div class="product-title">Designer Jeans</div>
+                    <div class="product-price">$39.99</div>
+                </div>
+				<button class="add-to-cart-button" data-product="Designer Jeans">Add to Cart</button>
+            </div>
+
+            <!-- Electronics Category -->
+            <div class="product">
+                <img src="electronics1.jpeg" alt="Electronics 1">
+                <div class="product-details">
+                    <div class="product-title">Smartphone</div>
+                    <div class="product-price">$299.99</div>
+                </div>
+				<button class="add-to-cart-button" data-product="Electronics">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="electronics2.jpeg" alt="Electronics 2">
+                <div class="product-details">
+                    <div class="product-title">Wireless Headphones</div>
+                    <div class="product-price">$89.99</div>
+                </div>
+				<button class="add-to-cart-button" data-product="Wireless Headphones">Add to Cart</button>
+			</div>
+        </div>
+    </div>
+    <div class="catalog-container">
+        <h1>Product Catalog</h1>
+
+        <div class="category">
+            <!-- Apparel Category -->
+            <div class="product">
+                <img src="apparel1.jpeg" alt="Apparel 1">
+                <div class="product-details">
+                    <div class="product-title">Stylish T-Shirt</div>
+                    <div class="product-price">$19.99</div>
+                </div>
+				<button class="add-to-cart-button" data-product="Stylish T-Shirt">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="apparel2.jpeg" alt="Apparel 2">
+                <div class="product-details">
+                    <div class="product-title">Designer Jeans</div>
+                    <div class="product-price">$39.99</div>
+                </div>
+				<button class="add-to-cart-button" data-product="Designer Jeans">Add to Cart</button>
+            </div>
+
+            <!-- Electronics Category -->
+            <div class="product">
+                <img src="electronics1.jpeg" alt="Electronics 1">
+                <div class="product-details">
+                    <div class="product-title">Smartphone</div>
+                    <div class="product-price">$299.99</div>
+                </div>
+				<button class="add-to-cart-button" data-product="Electronics">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="electronics2.jpeg" alt="Electronics 2">
+                <div class="product-details">
+                    <div class="product-title">Wireless Headphones</div>
+                    <div class="product-price">$89.99</div>
+                </div>
+				<button class="add-to-cart-button" data-product="Wireless Headphones">Add to Cart</button>
+			</div>
+        </div>
+    </div>
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-button');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', addToCart);
+        });
+
+        function addToCart(event) {
+            const productName = event.currentTarget.getAttribute('data-product');
+            let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : {};
+            cart[productName] = cart[productName] ? cart[productName] + 1 : 1;
+            localStorage.setItem('cart', JSON.stringify(cart));
+			showMessage(productName + ' added sucessfully',1000)
+        }
+		function showMessage(message, duration) {
+			console.log('message')
+            const messageContainer = document.createElement('div');
+            messageContainer.className = 'message-container';
+            messageContainer.textContent = message;
+
+            document.body.appendChild(messageContainer);
+
+            // Trigger reflow to apply initial styles and animation
+            void messageContainer.offsetWidth;
+
+            // Slide in from the right
+            messageContainer.style.right = '20px';
+
+            setTimeout(() => {
+                // Slide out to the right
+                messageContainer.style.right = '-100%';
+
+                // Remove the message container after the animation
+                setTimeout(() => {
+                    document.body.removeChild(messageContainer);
+                }, 500); // Adjust the duration based on your transition duration
+            }, duration);
+        }
+    });
+</script>
+</body>
+</html>

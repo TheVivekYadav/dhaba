@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .registration-container {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: left;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th, td {
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #0056b3;
+        }
+
+        .languages-label {
+            font-weight: bold;
+        }
+
+        .address-textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Registration Form</h2>
+        <form>
+            <table>
+                <tr>
+                    <th><label for="name">Name:</label></th>
+                    <td><input type="text" id="name" name="name" required></td>
+                </tr>
+                <tr>
+                    <th><label for="password">Password:</label></th>
+                    <td><input type="password" id="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <th><label for="email">Email Id:</label></th>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <th><label for="phone">Phone Number:</label></th>
+                    <td><input type="tel" id="phone" name="phone" required></td>
+                </tr>
+                <tr>
+                    <th><label for="sex">Sex:</label></th>
+                    <td>
+                        <input type="radio" id="male" name="sex" value="Male" required>
+                        <label for="male">Male</label>
+                        <input type="radio" id="female" name="sex" value="Female" required>
+                        <label for="female">Female</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="dob">Date Of Birth (dd-mm-yyyy):</label></th>
+                    <td><input type="text" id="dob" name="dob" placeholder="dd-mm-yyyy" required></td>
+                </tr>
+                <tr>
+                    <th class="languages-label">Languages Known:</th>
+                    <td>
+                        <input type="checkbox" id="english" name="languages[]" value="English">
+                        <label for="english">English</label>
+                        <input type="checkbox" id="telugu" name="languages[]" value="Telugu">
+                        <label for="telugu">Telugu</label>
+                        <input type="checkbox" id="hindi" name="languages[]" value="Hindi">
+                        <label for="hindi">Hindi</label>
+                        <input type="checkbox" id="tamil" name="languages[]" value="Tamil">
+                        <label for="tamil">Tamil</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="address">Address:</label></th>
+                    <td><textarea id="address" name="address" class="address-textarea" required></textarea></td>
+                </tr>
+            </table>
+
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </form>
+    </div>
+</body>
+</html>

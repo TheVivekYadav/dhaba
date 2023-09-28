@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amsn's Dhaba</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        header {
+            background-color: #ff6600;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .slider-container {
+            margin-top: 40px;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slider img {
+            width: 100%;
+        }
+
+        .slider-button {
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .slider-button:hover {
+            background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Dhaba</h1>
+        <p>Experience the Best Indian Cuisine</p>
+    </header>
+    
+    <div class="container">
+        <h2>Featured Food Items</h2>
+        <div class="card-container">
+            <!-- Food Card 1 -->
+            <div class="card">
+                <img src="food1.jpeg" alt="Food 1">
+                <div class="card-content">
+                    <h3>Delicious Curry</h3>
+                    <p>Enjoy our flavorful curry with aromatic spices.</p>
+                </div>
+            </div>
+
+            <!-- Food Card 2 -->
+            <div class="card">
+                <img src="food2.jpeg" alt="Food 2">
+                <div class="card-content">
+                    <h3>Tandoori Delight</h3>
+                    <p>Try our mouthwatering tandoori dishes cooked in a traditional clay oven.</p>
+                </div>
+            </div>
+
+            <!-- Food Card 3 -->
+            <div class="card">
+                <img src="food3.jpeg" alt="Food 3">
+                <div class="card-content">
+                    <h3>Flavorful Biryani</h3>
+                    <p>Indulge in our fragrant and rich biryani.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Slider -->
+        <h2>Discover Our Specialties</h2>
+        <div class="slider-container">
+            <div class="slider">
+                <img src="slider1.jpeg" alt="Slider 1">
+                <img src="slider2.jpeg" alt="Slider 2">
+                <img src="slider3.jpeg" alt="Slider 3">
+            </div>
+        </div>
+        <button class="slider-button" onclick="prevSlide()">&#10094; Prev</button>
+        <button class="slider-button" onclick="nextSlide()">Next &#10095;</button>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slider img');
+            if (n < 0) {
+                slideIndex = slides.length - 1;
+            } else if (n >= slides.length) {
+                slideIndex = 0;
+            }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+            slides[slideIndex].style.display = 'block';
+        }
+
+        function nextSlide() {
+            showSlide(++slideIndex);
+        }
+
+        function prevSlide() {
+            showSlide(--slideIndex);
+        }
+
+        showSlide(slideIndex);
+    </script>
+</body>
+</html>
